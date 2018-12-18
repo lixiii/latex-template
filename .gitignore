@@ -1,0 +1,15 @@
+*.m~
+.DS_Store
+output/
+
+# LaTeX ignores
+*.aux
+*.log
+*.gz
+*.pdf
+*.xml
+*.bbl
+*.bcf
+*.blg
+*.dvi
+_minted-report/
