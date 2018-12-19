@@ -35,9 +35,14 @@ fs.readdirSync("./build/", (err, files) => {
   }
 });
 
+var LaTeXdata = `\n`;
+
 // now process the matlab files
 fromDir('./matlab/',/\.m$/,function(filename){
     console.log('Processing file: ',filename);
+
+    // add latex snippet
+    LaTeXdata = LaTeXdata + `\\inputminted[breaklines]{matlab}{./build/${filename}}\n`;
 
     var filepath = path.join('./matlab/',filename);
     var data = fs.readFileSync( filepath ); //read existing contents into data
@@ -54,3 +59,7 @@ fromDir('./matlab/',/\.m$/,function(filename){
 });
 
 console.log(`\n-------------------------\nProcessed ${count} files \n`);
+
+// export LaTeX
+fs.writeFileSync("./build/snippet.tex", LaTeXdata);
+console.log("LaTeX snippet to include all the code files is exported to ./build/snippet.tex");
