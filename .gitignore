@@ -1,6 +1,7 @@
 *.m~
 .DS_Store
 output/
+build/
 
 # LaTeX ignores
 *.aux
